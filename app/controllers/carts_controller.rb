@@ -11,11 +11,11 @@ class CartsController < ApplicationController
         # @prices = @items.collect {|item| item.price}
         # @quantities =  @cart_items.collect{|item| item.item_quantity}
         # @totals = @prices * @quantities
-
+        # @item = Item.find(@cart.items.item_id)
     end
 
     def show
-        @cart = Cart.find(params[:id])
+        @cart = Cart.find(session[:cart_id])
     end
 
     def new

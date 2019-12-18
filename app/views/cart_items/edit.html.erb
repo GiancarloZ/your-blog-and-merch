@@ -1,0 +1,5 @@
+<%= link_to 'Back', url_for(:back) %><br>
+Name: <%=@item.name%><br>
+Price: <%=@item.price %> <br><br>
+
+<%= render partial: 'form', locals:{cart_item: @item, button_label: "Update Cart"} %><%= link_to "Delete", item_cart_item_path(@item.id, @cartitems.id), :method  => :delete, data: { confirm: 'Are you sure?' } %><br>

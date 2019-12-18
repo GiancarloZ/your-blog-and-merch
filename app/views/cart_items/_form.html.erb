@@ -1,0 +1,7 @@
+<%= form_for([@cartitems.item, @cartitems]) do |f| %>
+    <div class='field'>
+      <%= f.label :item_quantity %><br />
+      <%= f.number_field :item_quantity %>
+
+      <%= f.submit button_label %>
+<% end %>

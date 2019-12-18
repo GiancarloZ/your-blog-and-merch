@@ -1,9 +1,12 @@
-
+<%= link_to 'Back', url_for(:back) %>
 <ul>    
     <% @comments.each do |comment| %>
         <li>
             <%= comment.user_comment %><br>
-            By: <%= link_to comment.user.first_name, user_path(comment.user) %>
+            By: <%= link_to comment.user.first_name, user_path(comment.user) %><br>
+            <% if current_user.id == comment.user_id %>
+            <%= link_to "delete", post_comment_path(comment.post_id, comment.id), :method  => :delete, data: { confirm: 'Are you sure?' } %><br>
+            <%end%>
         </li>
     <% end %>
 </ul>

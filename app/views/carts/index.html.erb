@@ -1,5 +1,8 @@
+<%= link_to 'Back', url_for(:back) %><br>
 <h1><u> Your Cart </u></h1>
-
+<% if @cart_items.empty? %>
+  <h3>Empty Cart </h3>
+<%end%>
 <table class="table">
   <thead>
     <tr>
@@ -13,6 +16,7 @@
         <th><strong>Price</strong></th>
         <th><strong>Quantity</strong></th>
         <th><strong>Total</strong></th>
+        <th><strong>Edit</strong></th>
     </tr>
 
         <% @cart_items.each do |item| %>
@@ -20,11 +24,12 @@
             <td><%= @name = Item.find(item.item_id).name %></td>
             <td><%= @price = Item.find(item.item_id).price %></td>
             <td><%= @quantity = item.item_quantity %></td>
-            <td><%= @total = @price * @quantity %></td>
+            <td><%= @total = @price * @quantity %> </td>
+            <td><%= link_to "edit", edit_item_cart_item_path(item.item_id, item.id) %></td>
         </tr>
     <% end %>
 </tbody>
 </table>
-<div> Total: $<%= @cart_items.sum(@total) %></div>
+
 <br><br>
 <%= link_to "Place Order" %>

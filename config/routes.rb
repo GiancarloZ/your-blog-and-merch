@@ -14,10 +14,12 @@ Rails.application.routes.draw do
   end
 
   resources :posts do
-    resources :comments
+    resources :comments, only: [:show, :index, :new, :edit, :destroy]
   end
 
-  
+  resources :comments
+  resources :posts
+
   resources :items do 
     resources :cart_items
   end

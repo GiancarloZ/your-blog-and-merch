@@ -21,6 +21,32 @@ class CartItemsController < ApplicationController
 
     end
 
+    def edit
+        @item = Item.find(params[:item_id])
+        @cart = Cart.find(session[:cart_id])
+        @cartitems = @item.cart_items.find(params[:id])
+    end
+
+    def update
+        @cart_item = CartItem.find(params[:id])
+        @cart_item.update(cartitems_params)
+
+        if @cart_item.save
+            redirect_to carts_path
+        else
+            render :edit
+        end
+    end
+    
+    def destroy
+        @item = Item.find(params[:item_id])
+        @cart = Cart.find(session[:cart_id])
+        @cartitems = @item.cart_items.find(params[:id])
+        @cartitems.destroy
+        flash[:alert] = "Item Deleted From Cart."
+        redirect_to carts_path
+    end
+
     private
 
     def cartitems_params

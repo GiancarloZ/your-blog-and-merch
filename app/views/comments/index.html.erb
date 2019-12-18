@@ -1,0 +1,14 @@
+
+<ul>    
+    <% @comments.each do |comment| %>
+        <li>
+            <%= comment.user_comment %><br>
+            By: <%= link_to comment.user.first_name, user_path(comment.user) %>
+        </li>
+    <% end %>
+</ul>
+
+<%= link_to "Add Comment", new_post_comment_path %>
+
+<br>
+<%= link_to "All Posts", posts_path %>

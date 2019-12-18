@@ -1,0 +1,9 @@
+Name: <%=@item.name%><br>
+Price: <%=@item.price %> <br><br>
+
+<%= link_to "Add to Cart", new_item_cart_item_path(@item) %>
+<%if current_user.admin %>
+    <%= link_to "Edit Item", edit_item_path(@item) %>
+<% end %>
+<br><br>
+<%= link_to "All Items", items_path %>

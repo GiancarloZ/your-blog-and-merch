@@ -1,0 +1,30 @@
+<h1><u> Your Cart </u></h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr> 
+        <th><strong>Name</strong></th>
+        <th><strong>Price</strong></th>
+        <th><strong>Quantity</strong></th>
+        <th><strong>Total</strong></th>
+    </tr>
+
+        <% @cart_items.each do |item| %>
+        <tr>
+            <td><%= @name = Item.find(item.item_id).name %></td>
+            <td><%= @price = Item.find(item.item_id).price %></td>
+            <td><%= @quantity = item.item_quantity %></td>
+            <td><%= @total = @price * @quantity %></td>
+        </tr>
+    <% end %>
+</tbody>
+</table>
+<div> Total: $<%= @cart_items.sum(@total) %></div>
+<br><br>
+<%= link_to "Place Order" %>

@@ -1,0 +1,20 @@
+<%= form_for(@item) do |f| %>
+    
+    <div class='field'>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+    </div>
+
+    <div class='field'>
+    <%= f.label :price %><br />
+    <%= f.number_field :price %>
+    </div>
+
+    <div class='field'>
+    <%= f.label :quantity %><br />
+    <%= f.number_field :quantity %>
+    </div>
+
+    </div><br />
+    <%= f.submit "Add Item" %>
+<%end%>

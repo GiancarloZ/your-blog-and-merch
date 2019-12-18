@@ -1,0 +1,6 @@
+
+  <%= @comment.user_comment%><br>   
+    
+    <% if current_user.id == @comment.user_id %>
+    <%= link_to "delete", post_comment_path(@comment), :method  => :delete %><br>
+    <%end%>

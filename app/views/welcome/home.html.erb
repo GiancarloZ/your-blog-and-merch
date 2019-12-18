@@ -1,0 +1,8 @@
+<h1> Welcome to your Blog/Merch Store!</h1>
+
+<% if !logged_in? %>
+<%= render partial: 'sessions/form', locals:{user: @user, button_label: "Log In"} %>
+    Or <%= link_to "Sign Up", signup_path %>
+<% else %>
+    <%= link_to "Profile Page", user_path(current_user) %>
+<%end%>

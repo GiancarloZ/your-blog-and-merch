@@ -2,6 +2,7 @@
 
 <% if !logged_in? %>
 <%= render partial: 'sessions/form', locals:{user: @user, button_label: "Log In"} %>
+<%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
     Or <%= link_to "Sign Up", signup_path %>
 <% else %>
     <%= link_to "Profile Page", user_path(current_user) %>

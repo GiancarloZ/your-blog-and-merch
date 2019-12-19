@@ -4,6 +4,16 @@ class CartsController < ApplicationController
         @cart = Cart.find(session[:cart_id])
         @cart_items = @cart.cart_items 
         @cart_item_count = @cart_items.count
+        @totals = []
+        @cart_items.map do |item|
+            
+            @name = Item.find(item.item_id).name
+            @price = Item.find(item.item_id).price
+            @quantity = item.item_quantity
+            @total = @price * @quantity
+            @totals << @total
+        end
+        @order = Order.find_or_create_by(cart_id: @cart.id)
         # @items_quantity = @cart_items.collect{|item| @item_id = item.item_id, @item_quantity = item.item_quantity}
         # @items = @items_quantity.colect {|item| Item.find(item[0])}
         # # @name = @items.collect {|item| item.name}
@@ -17,6 +27,24 @@ class CartsController < ApplicationController
 
     def show
         @cart = Cart.find(session[:cart_id])
+
+        if @cart.cart_items == nil
+            redirect_to carts_path
+        else
+        @cart_items = @cart.cart_items
+        @totals = []
+        @cart_items.map do |item|
+            
+            @name = Item.find(item.item_id).name
+            @price = Item.find(item.item_id).price
+            @quantity = item.item_quantity
+            @total = @price * @quantity
+            @totals << @total
+        end
+        @order = Order.create(cart_id: @cart.id)
+        @order_items = @order.cart.cart_items
+        redirect_to cart_order_path(@order)
+        end
     end
 
     def new

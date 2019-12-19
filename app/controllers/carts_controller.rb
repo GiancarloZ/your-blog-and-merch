@@ -2,9 +2,10 @@ class CartsController < ApplicationController
     
     def index
         @cart = Cart.find(session[:cart_id])
-        @cart_items = @cart.cart_items
+        @cart_items = @cart.cart_items 
+        @cart_item_count = @cart_items.count unless @cart_items == nil
         # @items_quantity = @cart_items.collect{|item| @item_id = item.item_id, @item_quantity = item.item_quantity}
-        # @items = @items_quantity.collect {|item| Item.find(item[0])}
+        # @items = @items_quantity.colect {|item| Item.find(item[0])}
         # # @name = @items.collect {|item| item.name}
         # # #@quantity = @items_quantity.collect {|quantity| quantity[1]}
 

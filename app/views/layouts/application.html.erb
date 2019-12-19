@@ -21,6 +21,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
         </div>
@@ -42,7 +43,8 @@
               <%= link_to "Shop", items_path %>
             </li>
             <li>
-              <%= link_to "Cart (#{@cart.items.count})", carts_path %>
+              <%= link_to "Cart (#{@cart_item_count})", carts_path %>
+            </li>
             <li>
               <%= link_to "Log Out", logout_path %>
             </li>

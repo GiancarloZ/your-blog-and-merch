@@ -10,8 +10,11 @@ class UsersController < ApplicationController
 
         if @user.save
             session[:user_id] = @user.id
+            @cart = Cart.find_or_create_by(user_id: session[:user_id])
+            session[:cart_id] = @cart.id
             redirect_to root_path
         else
+            flash[:alert] = "Email and Password must be filled out!"
             render :new
         end
 

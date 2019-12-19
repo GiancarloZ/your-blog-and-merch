@@ -42,7 +42,7 @@
               <%= link_to "Shop", items_path %>
             </li>
             <li>
-              <%= link_to "Cart", carts_path %>
+              <%= link_to "Cart (#{@cart.items.count})", carts_path %>
             <li>
               <%= link_to "Log Out", logout_path %>
             </li>

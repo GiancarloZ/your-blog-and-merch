@@ -14,6 +14,7 @@ class CartsController < ApplicationController
             @totals << @total
         end
         @order = Order.find_or_create_by(cart_id: @cart.id)
+
         # @items_quantity = @cart_items.collect{|item| @item_id = item.item_id, @item_quantity = item.item_quantity}
         # @items = @items_quantity.colect {|item| Item.find(item[0])}
         # # @name = @items.collect {|item| item.name}

@@ -15,16 +15,16 @@
         <th><strong>Total</strong></th>
     </tr>
 
-        <% @order_items.each do |item| %>
-        <tr>
-            <td><%= @name = Item.find(item.item_id).name %></td>
-            <td><%= @price = Item.find(item.item_id).price %></td>
-            <td><%= @quantity = item.item_quantity %></td>
-            <td><%= @total = @price * @quantity %> </td>
-        </tr>
+    <% @order_items.each do |item| %>
+      <tr>
+          <td><%= @name = Item.find(item.item_id).name %></td>
+          <td><%= @price = Item.find(item.item_id).price %></td>
+          <td><%= @quantity = item.item_quantity %></td>
+          <td><%= @total = @price * @quantity %> </td>
+      </tr>
     <% end %>
     
-</tbody>
+  </tbody>
 </table>
 Total: $<%= @totals.sum %>
 <br><br>

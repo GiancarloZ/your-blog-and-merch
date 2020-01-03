@@ -29,4 +29,6 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show]
   end
 
+  resources :categories, only: [:show, :new, :create]
+
 end

@@ -15,14 +15,16 @@ class ApplicationController < ActionController::Base
     end
 
     def cart_item_count
-      @cart = Cart.find(session[:cart_id])
-      @cart_items = @cart.cart_items 
-      @cart_items.count
-      if @cart_items.count == nil
-        "0"
-      else
+      if logged_in?
+        @cart = Cart.find_by(id: session[:cart_id])
+        @cart_items = @cart.cart_items 
         @cart_items.count
+        if @cart_items.count == nil
+          "0"
+        else
+          @cart_items.count
+        end
       end
-    end
+  end
 
 end

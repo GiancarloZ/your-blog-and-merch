@@ -6,6 +6,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if user.persisted?
         flash[:alert] = I18n.t 'devise.omniauth_callbacks.success', kind: 'Google'
         session[:user_id] = user.id
+        @cart = Cart.find_or_create_by(user_id: session[:user_id])
+        session[:cart_id] = @cart.id
         sign_in_and_redirect user, event: :authentication
       else
         session['devise.google_data'] = request.env['omniauth.auth'].except(:extra) # Removing extra as it can overflow some session stores

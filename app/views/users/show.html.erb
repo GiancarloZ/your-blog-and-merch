@@ -1,2 +1,9 @@
 <h1>Welcome to <%= current_user.first_name%> <%= current_user.last_name%>'s Profile </h1>
 
+<ul>
+<% current_user.comments.each do |comment| %>
+    <li>
+    <%= link_to comment.user_comment, post_path(comment.post) %>
+    </li>
+<%end%>
+</ul>

@@ -19,7 +19,7 @@
         <th><strong>Edit</strong></th>
     </tr>
 
-        <% @cart_items.each do |item| %>
+      <% @cart_items.each do |item| %>
         <tr>
             <td><%= @name = Item.find(item.item_id).name %></td>
             <td><%= @price = Item.find(item.item_id).price %></td>
@@ -27,7 +27,7 @@
             <td><%= @total = @price * @quantity %> </td>
             <td><%= link_to "edit", edit_item_cart_item_path(item.item_id, item.id) %></td>
         </tr>
-    <% end %>
+      <% end %>
     
 </tbody>
 </table>

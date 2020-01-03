@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     end
     
     def create
-      user = User.find_by(email: params[:user][:email]) || User.find_by(email: data['email'])
+      user = User.find_by(email: params[:user][:email])
       if user && user.authenticate(params[:user][:password])
         session[:user_id] = user.id
         @cart = Cart.find_or_create_by(user_id: session[:user_id])

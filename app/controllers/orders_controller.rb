@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
 
         @cart_items = @cart.cart_items
         @totals = []
+
         @cart_items.map do |item|
             
             @name = Item.find(item.item_id).name
@@ -16,8 +17,11 @@ class OrdersController < ApplicationController
             @quantity = item.item_quantity
             @total = @price * @quantity
             @totals << @total
+            
         end
+
         @order_items = @order.cart.cart_items
+        
     end
     
     private

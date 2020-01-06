@@ -1,4 +1,6 @@
-<h1>My Blog </h1> <%= link_to "Top Post", @most_comments%>
+<h1>My Blog </h1> 
+
+<%= link_to "Top Post", @most_comments%>
 
 <ul>
     <% @posts.each do |post| %>
@@ -11,5 +13,6 @@
 </ul><br>
 
 <%if current_user.admin %>
-    <%= link_to "Create New Blog Post", new_post_path(@post) %>
+    <%= link_to "Create New Blog Post", new_post_path(@post) %> <br>
+    <%= link_to "Create New Category", new_category_path(@category) %>
 <% end %>

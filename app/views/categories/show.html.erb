@@ -1,0 +1,7 @@
+<h2>All Posts About <%= @category.name %></h2>
+
+<ul class="category-list">
+<% @category.posts.each do |post|  %></p>
+  <li itemprop="genre" class="category-posts"> <%= link_to post.title, post_path(post) %></li>
+<% end %>
+</ul>

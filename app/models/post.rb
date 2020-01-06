@@ -1,8 +1,8 @@
 class Post < ActiveRecord::Base
     has_many :comments
     belongs_to :user 
-    belong_to :category
-     
+    belongs_to :category
+
     validates :title, :content, presence: true
 
     scope :find_post, ->(title) {where("(title) == ?", title)}

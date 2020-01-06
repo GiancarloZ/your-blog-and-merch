@@ -18,7 +18,8 @@ class PostsController < ApplicationController
     def create
         @post = Post.create(post_params)
         @post.user_id = session[:user_id]
-
+        @category = Category.find_or_create_by(name: params[:post][:category_id])
+        @post.category_id = @category.id
         if @post.save
             redirect_to post_path(@post)
         else
@@ -31,14 +32,16 @@ class PostsController < ApplicationController
     end
 
     def edit
-        @post =   Post.find(params[:id])  
+        @post = Post.find(params[:id]) 
+        @categories = Category.all 
     end
 
     def update
         @post = Post.find(params[:id])
 
         @post.update(post_params)
-    
+        @category = Category.find_or_create_by(name: params[:post][:category_id])
+        @post.category_id = @category.id
         if @post.save
           redirect_to post_path(@post)
         else
@@ -57,7 +60,7 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:title, :content, :user_id)
+        params.require(:post).permit(:title, :content, :user_id, :category_id)
     end
 
 end

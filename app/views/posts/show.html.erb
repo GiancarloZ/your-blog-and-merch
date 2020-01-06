@@ -4,6 +4,12 @@
 
 <p><%= @post.content %></p><br>
 
+<% if @post.category_id == nil %>
+  <p>Category: No Category </p><br>
+<% else %>
+  <p>Category: <%= link_to @post.category.name, category_path(@post.category) %></p><br>
+<%end%>
+
 <%= link_to "Comments:", post_comments_path(@post) %><br>
 <% if @post.comments.empty? %>
   <p>There are no comments</p>
